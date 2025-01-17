@@ -11,7 +11,7 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        TextView adminMessage = findViewById(R.id.admin_message);
-        adminMessage.setText("Bienvenue dans le panneau d'administration !");
+        //TextView adminMessage = findViewById(R.id.admin_message);
+        //adminMessage.setText("Bienvenue dans le panneau d'administration !");
     }
 }

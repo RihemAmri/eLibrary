@@ -13,6 +13,22 @@
         android:theme="@style/Theme.LibraryLand"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateBookActivity"
+            android:exported="false"
+            android:theme="@style/Theme.LibraryLand" />
+        <activity
+            android:name=".AddBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BooksListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BorrowBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewDetails"
+            android:exported="false" />
+        <activity
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
@@ -29,7 +45,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
