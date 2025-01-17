@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "973232459485",
+    "project_id": "libraryland-f0499",
+    "storage_bucket": "libraryland-f0499.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973232459485:android:9f4d21c06df3a33abb5534",
+        "android_client_info": {
+          "package_name": "com.example.libraryland"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_yoZTms_ZQPOu5U7OrSKiDj-LgeFjGIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
