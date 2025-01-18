@@ -1,9 +1,10 @@
 package com.example.libraryland;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
-
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class AdminActivity extends AppCompatActivity {
     @Override
@@ -11,7 +12,17 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        //TextView adminMessage = findViewById(R.id.admin_message);
-        //adminMessage.setText("Bienvenue dans le panneau d'administration !");
+        // Trouver la CardView pour les livres
+        CardView booksCard = findViewById(R.id.books_card);
+
+        // Ajouter un clic listener
+        booksCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lancer BooksListActivity
+                Intent intent = new Intent(AdminActivity.this, BooksListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -41,7 +41,12 @@ dependencies {
     implementation libs.firebase.database
     implementation libs.navigation.fragment
     implementation libs.navigation.ui
+    implementation libs.firebase.storage
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    //cloudinary sdk
+    implementation 'com.cloudinary:cloudinary-android:3.0.2'
+    annotationProcessor 'com.github.bumptech.glide:complier:4.14.2'
+
 }

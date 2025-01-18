@@ -1,24 +1,35 @@
 package com.example.libraryland;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class BooksListActivity extends AppCompatActivity {
-
+    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_books_list);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        // Trouver le bouton d'ajout de livre
+        fab = findViewById(R.id.fab);
+
+        // Ajouter un clic listener pour ouvrir le formulaire d'ajout de livre
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lancer AddBookActivity
+                Intent intent = new Intent(BooksListActivity.this, AddBookActivity.class);
+                startActivity(intent);
+                Log.d("BooksListActivity", "FAB clicked");
+
+            }
         });
     }
 }
