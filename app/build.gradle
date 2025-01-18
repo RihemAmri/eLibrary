@@ -47,6 +47,6 @@ dependencies {
     androidTestImplementation libs.espresso.core
     //cloudinary sdk
     implementation 'com.cloudinary:cloudinary-android:3.0.2'
-    annotationProcessor 'com.github.bumptech.glide:complier:4.14.2'
+    //annotationProcessor 'com.github.bumptech.glide:complier:4.14.2'
 
 }
