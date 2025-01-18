@@ -13,6 +13,9 @@
         android:theme="@style/Theme.LibraryLand"
         tools:targetApi="31">
         <activity
+            android:name=".Hist_BorrowActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateBookActivity"
             android:exported="false"
             android:theme="@style/Theme.LibraryLand" />
