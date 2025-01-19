@@ -2,13 +2,11 @@ package com.example.libraryland;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,11 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapterbookuser extends RecyclerView.Adapter<MyAdapterbookuser.MyViewHolder> {
     Context context;
     ArrayList<Book> list;
 
-    public MyAdapter(Context context, ArrayList<Book> list) {
+    public MyAdapterbookuser(Context context, ArrayList<Book> list) {
         this.context = context;
         this.list = list;
     }
