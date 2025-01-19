@@ -6,15 +6,29 @@
     tools:context=".BooksListActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Titre d'en-tête -->
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Books List"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@color/lavender" />
 
+    <!-- RecyclerView pour afficher la liste -->
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
-        android:scrollbars="vertical"/>
-    <!-- Bouton d'ajout en bas à droite -->
+        android:layout_below="@id/headerTitle"
+        android:scrollbars="vertical"
+        android:layout_marginTop="10dp" />
 
+    <!-- Bouton d'ajout en bas à droite -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -23,6 +37,7 @@
         android:layout_alignParentRight="true"
         android:layout_margin="40dp"
         android:backgroundTint="@color/lavender"
-        app:tint = "@color/white"
+        app:tint="@color/white"
         android:src="@drawable/baseline_add_24" />
+
 </RelativeLayout>
