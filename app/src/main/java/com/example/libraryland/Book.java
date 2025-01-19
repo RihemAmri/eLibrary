@@ -1,6 +1,8 @@
 package com.example.libraryland;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book  implements Serializable {
     String title, author, genre, created_at, updated_at, description,dataImage; // Ajout de description
     int year;
     boolean availability;

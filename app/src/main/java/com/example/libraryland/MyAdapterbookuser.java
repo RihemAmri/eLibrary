@@ -48,7 +48,7 @@ public class MyAdapterbookuser extends RecyclerView.Adapter<MyAdapterbookuser.My
         holder.moreOptionsButton.setOnClickListener(v -> {
             // Redirection vers ViewDetailsActivity avec l'ID du livre
             Intent intent = new Intent(context, ViewDetails.class);
-            intent.putExtra("BOOK_ID", book.getTitle()); // Passez l'ID du livre
+            intent.putExtra("BOOK_DETAILS", book); // Passez l'ID du livre
             context.startActivity(intent);
         });
 
