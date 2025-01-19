@@ -3,12 +3,8 @@ package com.example.libraryland;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,12 +15,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
-    MyAdapter myAdapter;
+    MyAdapterbookuser myAdapter;
     ArrayList<Book> list;
 
     @Override
@@ -37,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list =new ArrayList<>();
-        myAdapter=new MyAdapter(this,list);
+        myAdapter=new MyAdapterbookuser(this,list);
         recyclerView.setAdapter(myAdapter);
         database.addValueEventListener(new ValueEventListener() {
             @Override

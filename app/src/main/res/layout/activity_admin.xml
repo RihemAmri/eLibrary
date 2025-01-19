@@ -66,6 +66,7 @@
 
                 <!-- Card 1: Number of Books -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/books_card"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     app:cardCornerRadius="16dp"
@@ -83,7 +84,7 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/baseline_lock_24"
+                            android:src="@drawable/baseline_menu_book_24"
                             app:tint="@color/white" />
 
                         <TextView
@@ -165,7 +166,7 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/baseline_lock_24"
+                            android:src="@drawable/baseline_library_books_24"
                             app:tint="@color/white" />
 
                         <TextView
