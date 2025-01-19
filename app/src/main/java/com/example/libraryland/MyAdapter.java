@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -50,7 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.moreOptionsButton.setOnClickListener(v -> {
             // Redirection vers ViewDetailsActivity avec l'ID du livre
             Intent intent = new Intent(context, ViewDetails.class);
-            intent.putExtra("BOOK_title", book.getTitle()); // Passez l'ID du livre
+            intent.putExtra("BOOK_ID", book.getTitle()); // Passez l'ID du livre
             context.startActivity(intent);
         });
 
