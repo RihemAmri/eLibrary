@@ -8,10 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,7 +45,7 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText inputTitle, inputAuthor, inputGenre, inputYear, inputDescription;
     private ProgressBar progressBar;
     private Uri imageUri;
-
+    private Spinner genreSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,14 @@ public class AddBookActivity extends AppCompatActivity {
         uploadImage = findViewById(R.id.uploadImage);
         inputTitle = findViewById(R.id.input_title);
         inputAuthor = findViewById(R.id.input_author);
-        inputGenre = findViewById(R.id.input_genre);
+        // Initialiser le Spinner
+        genreSpinner = findViewById(R.id.spinner_genre);
+        // Créer une liste de genres
+        String[] genres = {"Romance", "Science fiction", "Fantasy", "Horror", "Adventure", "Comedy"};
+        // Créer un ArrayAdapter en utilisant la liste de genres et le layout par défaut pour les éléments du Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, genres);
+        // Appliquer l'adaptateur au Spinner
+        genreSpinner.setAdapter(adapter);
         inputYear = findViewById(R.id.input_year);
         inputDescription = findViewById(R.id.input_description);
         saveButton = findViewById(R.id.save_button);
@@ -81,7 +90,7 @@ public class AddBookActivity extends AppCompatActivity {
     private void validateAndUploadBook() {
         String title = inputTitle.getText().toString().trim();
         String author = inputAuthor.getText().toString().trim();
-        String genre = inputGenre.getText().toString().trim();
+        String genre = genreSpinner.getSelectedItem().toString().trim();
         String yearString = inputYear.getText().toString().trim();
         String description = inputDescription.getText().toString().trim();
 

@@ -1,10 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateActivity">
+    tools:context=".UpdateActivity"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/progressBarLayout"
+            layout="@layout/progress_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Update Book Details"
+                    android:textSize="30sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/lavender" />
+
+                <!-- Image Upload -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/update_image"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/uploadimg"
+                    android:contentDescription="Update Book Image" />
+
+                <!-- Title -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/update_title"
+                    android:background="@drawable/lavender_border"
+                    android:layout_marginTop="20dp"
+                    android:padding="16dp"
+                    android:hint="Enter book title"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/lavender" />
+
+                <!-- Author -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/update_author"
+                    android:background="@drawable/lavender_border"
+                    android:layout_marginTop="20dp"
+                    android:padding="16dp"
+                    android:hint="Enter author name"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/lavender" />
+
+                <!-- Genre -->
+                <Spinner
+                    android:id="@+id/update_genre"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/lavender_border"
+                    android:padding="16dp" />
+
+                <!-- Year -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/update_year"
+                    android:background="@drawable/lavender_border"
+                    android:layout_marginTop="20dp"
+                    android:padding="16dp"
+                    android:hint="Enter publication year"
+                    android:inputType="number"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/lavender" />
+
+                <!-- Description -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:id="@+id/update_description"
+                    android:background="@drawable/lavender_border"
+                    android:layout_marginTop="20dp"
+                    android:padding="16dp"
+                    android:hint="Enter book description"
+                    android:gravity="start|top"
+                    android:textColor="@color/lavender"
+                    android:inputType="textMultiLine" />
+
+                <!-- Update Button -->
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Update"
+                    android:id="@+id/update_button"
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

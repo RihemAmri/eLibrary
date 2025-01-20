@@ -79,16 +79,14 @@
                     android:textColor="@color/lavender" />
 
                 <!-- Genre -->
-                <EditText
+                <Spinner
+                    android:id="@+id/spinner_genre"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/input_genre"
-                    android:background="@drawable/lavender_border"
                     android:layout_marginTop="20dp"
-                    android:padding="16dp"
-                    android:hint="Enter book genre"
-                    android:gravity="start|center_vertical"
-                    android:textColor="@color/lavender" />
+                    android:background="@drawable/lavender_border"
+                    android:padding="16dp" />
+
 
                 <!-- Year -->
                 <EditText

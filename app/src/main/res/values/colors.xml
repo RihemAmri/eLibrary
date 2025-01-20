@@ -12,5 +12,7 @@
     <color name="green_light">#90EE90</color>
     <color name="red_light">#FF900000</color>
     <color name="red">#c70000</color>
+    <color name="green">#00ff00</color>
+
 </resources>
 
