@@ -1,6 +1,7 @@
 package com.example.libraryland;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.recTitle.setText(dataList.get(position).getTitle());
         holder.recDesc.setText(dataList.get(position).getAuthor());
         holder.recLang.setText(dataList.get(position).getGenre());
+        // Configuration du clic sur la CardView
+        holder.recCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent pour passer à l'activité DetailActivity
+                Intent intent = new Intent(context, DetailActivity.class);
+
+                // Transmission des données du livre via l'Intent
+                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
+                intent.putExtra("Description", dataList.get(holder.getAdapterPosition()).getDescription()); // Envoi de la description
+                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getTitle());
+                intent.putExtra("Author", dataList.get(holder.getAdapterPosition()).getAuthor()); // Envoi de l'auteur
+                intent.putExtra("Genre", dataList.get(holder.getAdapterPosition()).getGenre()); // Envoi du genre
+                intent.putExtra("Key",dataList.get(holder.getAdapterPosition()).getKey());
+                // Démarrer l'activité
+                context.startActivity(intent);
+            }
+        });
     }
 
 

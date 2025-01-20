@@ -19,7 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -44,7 +48,6 @@ public class AddBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
-
         uploadImage = findViewById(R.id.uploadImage);
         inputTitle = findViewById(R.id.input_title);
         inputAuthor = findViewById(R.id.input_author);
@@ -133,8 +136,11 @@ public class AddBookActivity extends AppCompatActivity {
         book.setDataImage(imageUrl);
 
         // Référence à la table "books"
-        FirebaseDatabase.getInstance().getReference("books")
-                .push() // Génération automatique de l'ID pour chaque livre
+        DatabaseReference booksRef = FirebaseDatabase.getInstance().getReference("books");
+        String key = booksRef.push().getKey(); // Génère une clé unique
+        book.setKey(key); // Associe cette clé à l'objet Book
+
+        booksRef.child(key) // Utilise la clé générée comme identifiant
                 .setValue(book)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(AddBookActivity.this, "Book added successfully", Toast.LENGTH_SHORT).show();
@@ -156,6 +162,7 @@ public class AddBookActivity extends AppCompatActivity {
         }
         return file;
     }
+
 
 
 }
