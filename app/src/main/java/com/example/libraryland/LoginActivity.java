@@ -1,6 +1,7 @@
 package com.example.libraryland;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,31 +23,34 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText loginUsername, loginPassword;
-    Button loginButton;
-    TextView signupRedirectText;
+    private EditText loginUsername, loginPassword;
+    private Button loginButton;
+    private TextView signupRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Initialisation des vues
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
         signupRedirectText = findViewById(R.id.signupRedirectText);
         loginButton = findViewById(R.id.login_button);
 
+        // Gestion du clic sur le bouton de connexion
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!validateUsername() || !validatePassword()) {
-                    return;
+                    return; // Validation échouée, ne pas continuer
                 } else {
-                    checkUser();
+                    checkUser(); // Vérifier l'utilisateur
                 }
             }
         });
 
+        // Redirection vers la page d'inscription
         signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    // Méthode pour valider le champ du nom d'utilisateur
     public Boolean validateUsername() {
         String val = loginUsername.getText().toString();
         if (val.isEmpty()) {
@@ -67,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // Méthode pour valider le champ du mot de passe
     public Boolean validatePassword() {
         String val = loginPassword.getText().toString();
         if (val.isEmpty()) {
@@ -78,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // Vérifier si l'utilisateur existe dans la base de données
     public void checkUser() {
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
@@ -99,13 +106,18 @@ public class LoginActivity extends AppCompatActivity {
                     if (Objects.equals(passwordFromDB, hashPassword(userPassword))) {
                         loginUsername.setError(null);
 
+                        // Créer une session utilisateur
+                        createSession(userUsername, roleFromDB);
+
                         // Redirection selon le rôle
                         if ("admin".equals(roleFromDB)) {
                             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                             startActivity(intent);
+                            finish();
                         } else if ("user".equals(roleFromDB)) {
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, Hist_BorrowActivity.class);
                             startActivity(intent);
+                            finish();
                         }
                     } else {
                         loginPassword.setError("Identifiants invalides");
@@ -121,6 +133,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    // Méthode pour créer une session utilisateur
+    private void createSession(String username, String role) {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("username", username); // Stocker le nom d'utilisateur
+        editor.putString("role", role);         // Stocker le rôle de l'utilisateur
+        editor.apply();                         // Appliquer les changements
     }
 
     // Méthode pour hasher le mot de passe (SHA-256)
