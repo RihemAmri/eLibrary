@@ -1,15 +1,20 @@
-// ViewDetailsActivity.java
 package com.example.libraryland;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.libraryland.Book;
+import com.example.libraryland.R;
+
 
 public class ViewDetails extends AppCompatActivity {
 
-    private TextView textViewTitle, textViewAuthor, textViewDescription, textViewGenre, textViewYear, textViewAvailability;
+    private ImageView imageViewBookCover;
+    private TextView textViewTitle, textViewAuthor, textViewYear, textViewAvailability;
     private Button buttonBorrow;
 
     @Override
@@ -18,35 +23,54 @@ public class ViewDetails extends AppCompatActivity {
         setContentView(R.layout.activity_view_details);
 
         // Récupérer les vues
+        imageViewBookCover = findViewById(R.id.imageViewBookCover);
         textViewTitle = findViewById(R.id.textViewTitle);
         textViewAuthor = findViewById(R.id.textViewAuthor);
-        textViewDescription = findViewById(R.id.textViewDescription);
-        textViewGenre = findViewById(R.id.textViewGenre);
         textViewYear = findViewById(R.id.textViewYear);
         textViewAvailability = findViewById(R.id.textViewAvailability);
         buttonBorrow = findViewById(R.id.buttonBorrow);
 
-        // Récupérer l'objet Book passé via l'intent
+        // Récupérer l'objet Book depuis l'Intent
         Book book = (Book) getIntent().getSerializableExtra("BOOK_DETAILS");
 
         if (book != null) {
-            textViewTitle.setText("Title: " + book.getTitle());
+            // Mettre à jour les données dans les vues
+            textViewTitle.setText(book.getTitle());
             textViewAuthor.setText("Author: " + book.getAuthor());
-            textViewDescription.setText("Description: " + book.getDescription());
-            textViewGenre.setText("Genre: " + book.getGenre());
             textViewYear.setText("Year: " + book.getYear());
-            textViewAvailability.setText("Availability: " + (book.isAvailability() ? "Available" : "Not Available"));
+            textViewAvailability.setText(book.isAvailability() ? "Available" : "Not Available");
+
+            // Charger l'image depuis Firebase avec Picasso
+            /*Picasso.get()
+                    .load(book.getImageUrl())
+                    .placeholder(R.drawable.placeholder_image)
+                    .into(imageViewBookCover);*/
+
+            // Mettre à jour l'état du bouton selon la disponibilité
+            if (book.isAvailability()) {
+                buttonBorrow.setEnabled(true);
+                buttonBorrow.setBackgroundTintList(getResources().getColorStateList(android.R.color.holo_green_light));
+            } else {
+                buttonBorrow.setEnabled(false);
+                buttonBorrow.setBackgroundTintList(getResources().getColorStateList(android.R.color.darker_gray));
+            }
+
+            // Ajouter un listener sur le bouton Borrow
+            buttonBorrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ViewDetails.this, BorrowBookActivity.class);
+                    intent.putExtra("book", book); // Envoyer l'objet Book
+                    startActivity(intent);
+                }
+            });
+        } else {
+            // Gestion de l'absence de livre
+            textViewTitle.setText("Book details not available");
+            textViewAuthor.setText("");
+            textViewYear.setText("");
+            textViewAvailability.setText("");
+            buttonBorrow.setEnabled(false);
         }
-
-        // Action pour le bouton "Borrow"
-        buttonBorrow.setOnClickListener(v -> {
-            borrowBook(book);
-        });
-    }
-
-    private void borrowBook(Book book) {
-        // Implémentation de la logique de prêt (mettre à jour la base de données ou le stock)
-        // Exemple ici de modification fictive du statut de disponibilité
-        textViewAvailability.setText("Status: Borrowed");
     }
 }
