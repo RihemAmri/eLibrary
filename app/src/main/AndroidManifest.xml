@@ -20,6 +20,12 @@
         android:theme="@style/Theme.LibraryLand"
         tools:targetApi="31">
         <activity
+            android:name=".HistoriqueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateActivity"
             android:exported="false" />
         <activity

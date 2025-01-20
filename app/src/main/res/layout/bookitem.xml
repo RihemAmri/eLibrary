@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:backgroundTint="@color/purple_500"
+            android:backgroundTint="@color/lavender"
             android:text="View Details"
             android:textColor="@android:color/white"
             android:textSize="14sp"

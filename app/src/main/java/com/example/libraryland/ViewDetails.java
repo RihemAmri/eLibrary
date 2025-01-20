@@ -11,18 +11,58 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.libraryland.Book;
 import com.example.libraryland.R;
+import com.github.clans.fab.FloatingActionButton;
 
 
 public class ViewDetails extends AppCompatActivity {
 
     private ImageView imageViewBookCover;
-    private TextView textViewTitle, textViewAuthor, textViewYear, textViewAvailability;
+    private TextView textViewTitle, textViewAuthor, textViewYear, textViewAvailability,genre,description;
     private Button buttonBorrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_details);
+
+
+
+
+
+
+        // Button to navigate to Historique
+        FloatingActionButton historiqueButton = findViewById(R.id.historique);
+        historiqueButton.setOnClickListener(v -> {
+            Intent historiqueIntent = new Intent(ViewDetails.this, HistoriqueActivity.class);
+            startActivity(historiqueIntent);
+        });
+
+        // Button to log out and navigate to LoginActivity
+        FloatingActionButton logoutButton = findViewById(R.id.logout);
+        logoutButton.setOnClickListener(v -> {
+            // Here you can perform logout logic if necessary
+
+            // Redirect to LoginActivity
+            Intent logoutIntent = new Intent(ViewDetails.this, LoginActivity.class);
+            startActivity(logoutIntent);
+            finish(); // Close the current activity
+        });
+        FloatingActionButton homeButton = findViewById(R.id.home);
+        homeButton.setOnClickListener(v -> {
+            // Here you can perform logout logic if necessary
+
+            // Redirect to LoginActivity
+            Intent logoutIntent = new Intent(ViewDetails.this, MainActivity.class);
+            startActivity(logoutIntent);
+            finish(); // Close the current activity
+        });
+
+
+
+
+
+
+
 
         // Récupérer les vues
         imageViewBookCover = findViewById(R.id.imageViewBookCover);
@@ -31,6 +71,9 @@ public class ViewDetails extends AppCompatActivity {
         textViewYear = findViewById(R.id.textViewYear);
         textViewAvailability = findViewById(R.id.textViewAvailability);
         buttonBorrow = findViewById(R.id.buttonBorrow);
+        genre=findViewById(R.id.genre);
+        description=findViewById(R.id.description);
+
 
         // Récupérer l'objet Book depuis l'Intent
         Book book = (Book) getIntent().getSerializableExtra("BOOK_DETAILS");
@@ -40,6 +83,8 @@ public class ViewDetails extends AppCompatActivity {
             textViewTitle.setText(book.getTitle());
             textViewAuthor.setText("Author: " + book.getAuthor());
             textViewYear.setText("Year: " + book.getYear());
+            description.setText("Description: "+book.getDescription());
+            genre.setText("Genre: "+book.getGenre());
             textViewAvailability.setText(book.isAvailability() ? "Available" : "Not Available");
             Glide.with(this)
                     .load(book.getDataImage())  // URL de l'image
