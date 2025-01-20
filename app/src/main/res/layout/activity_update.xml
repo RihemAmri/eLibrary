@@ -4,10 +4,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddBookActivity"
+    tools:context=".UpdateActivity"
     android:padding="20dp">
 
-    <!-- Un conteneur unique pour tous les enfants -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +38,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add a New Book"
+                    android:text="Update Book Details"
                     android:textSize="30sp"
                     android:textAlignment="center"
                     android:textColor="@color/lavender" />
@@ -48,17 +47,17 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:id="@+id/uploadImage"
+                    android:id="@+id/update_image"
                     android:layout_marginTop="10dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/uploadimg"
-                    android:contentDescription="Upload Book Image" />
+                    android:contentDescription="Update Book Image" />
 
                 <!-- Title -->
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/input_title"
+                    android:id="@+id/update_title"
                     android:background="@drawable/lavender_border"
                     android:layout_marginTop="20dp"
                     android:padding="16dp"
@@ -70,7 +69,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/input_author"
+                    android:id="@+id/update_author"
                     android:background="@drawable/lavender_border"
                     android:layout_marginTop="20dp"
                     android:padding="16dp"
@@ -80,19 +79,18 @@
 
                 <!-- Genre -->
                 <Spinner
-                    android:id="@+id/spinner_genre"
+                    android:id="@+id/update_genre"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/lavender_border"
                     android:padding="16dp" />
 
-
                 <!-- Year -->
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/input_year"
+                    android:id="@+id/update_year"
                     android:background="@drawable/lavender_border"
                     android:layout_marginTop="20dp"
                     android:padding="16dp"
@@ -105,7 +103,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:id="@+id/input_description"
+                    android:id="@+id/update_description"
                     android:background="@drawable/lavender_border"
                     android:layout_marginTop="20dp"
                     android:padding="16dp"
@@ -114,12 +112,12 @@
                     android:textColor="@color/lavender"
                     android:inputType="textMultiLine" />
 
-                <!-- Save Button -->
+                <!-- Update Button -->
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Save"
-                    android:id="@+id/save_button"
+                    android:text="Update"
+                    android:id="@+id/update_button"
                     android:textSize="18sp"
                     android:layout_marginTop="20dp"
                     app:cornerRadius="20dp" />

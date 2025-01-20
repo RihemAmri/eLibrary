@@ -11,5 +11,20 @@
     <color name="gray">#505054</color>
     <color name="green_light">#90EE90</color>
     <color name="red_light">#FF900000</color>
+    <color name="primaryTextColor">#333333</color>
+
+    <!-- Couleur secondaire du texte -->
+    <color name="secondaryTextColor">#666666</color>
+
+    <!-- Couleur accent pour les boutons -->
+    <color name="colorAccent">#FF5722</color>
+
+    <!-- Couleur de fond -->
+    <color name="colorPrimary">#2196F3</color>
+
+    <!-- Couleur du texte des boutons -->
+    <color name="buttonTextColor">#FFFFFF</color>
+    <color name="red">#c70000</color>
+    <color name="green">#00ff00</color>
 </resources>
 

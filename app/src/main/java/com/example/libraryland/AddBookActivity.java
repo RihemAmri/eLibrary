@@ -8,10 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -39,16 +45,22 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText inputTitle, inputAuthor, inputGenre, inputYear, inputDescription;
     private ProgressBar progressBar;
     private Uri imageUri;
-
+    private Spinner genreSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
-
         uploadImage = findViewById(R.id.uploadImage);
         inputTitle = findViewById(R.id.input_title);
         inputAuthor = findViewById(R.id.input_author);
-        inputGenre = findViewById(R.id.input_genre);
+        // Initialiser le Spinner
+        genreSpinner = findViewById(R.id.spinner_genre);
+        // Créer une liste de genres
+        String[] genres = {"Romance", "Science fiction", "Fantasy", "Horror", "Adventure", "Comedy"};
+        // Créer un ArrayAdapter en utilisant la liste de genres et le layout par défaut pour les éléments du Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, genres);
+        // Appliquer l'adaptateur au Spinner
+        genreSpinner.setAdapter(adapter);
         inputYear = findViewById(R.id.input_year);
         inputDescription = findViewById(R.id.input_description);
         saveButton = findViewById(R.id.save_button);
@@ -78,7 +90,7 @@ public class AddBookActivity extends AppCompatActivity {
     private void validateAndUploadBook() {
         String title = inputTitle.getText().toString().trim();
         String author = inputAuthor.getText().toString().trim();
-        String genre = inputGenre.getText().toString().trim();
+        String genre = genreSpinner.getSelectedItem().toString().trim();
         String yearString = inputYear.getText().toString().trim();
         String description = inputDescription.getText().toString().trim();
 
@@ -133,8 +145,11 @@ public class AddBookActivity extends AppCompatActivity {
         book.setDataImage(imageUrl);
 
         // Référence à la table "books"
-        FirebaseDatabase.getInstance().getReference("books")
-                .push() // Génération automatique de l'ID pour chaque livre
+        DatabaseReference booksRef = FirebaseDatabase.getInstance().getReference("books");
+        String key = booksRef.push().getKey(); // Génère une clé unique
+        book.setKey(key); // Associe cette clé à l'objet Book
+
+        booksRef.child(key) // Utilise la clé générée comme identifiant
                 .setValue(book)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(AddBookActivity.this, "Book added successfully", Toast.LENGTH_SHORT).show();
@@ -156,6 +171,7 @@ public class AddBookActivity extends AppCompatActivity {
         }
         return file;
     }
+
 
 
 }

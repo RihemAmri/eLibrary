@@ -61,7 +61,7 @@ public class BooksListActivity extends AppCompatActivity {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot: snapshot.getChildren()){
                     Book dataClass = itemSnapshot.getValue(Book.class);
-                    //dataClass.setKey(itemSnapshot.getKey());
+                    dataClass.setKey(itemSnapshot.getKey());
                     dataList.add(dataClass);
                 }
                 adapter.notifyDataSetChanged();

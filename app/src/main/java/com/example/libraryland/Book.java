@@ -1,7 +1,9 @@
 package com.example.libraryland;
 
-public class Book {
-    String title, author, genre, created_at, updated_at, description,dataImage; // Ajout de description
+import java.io.Serializable;
+
+public class Book implements Serializable {
+    String title, author, genre, created_at, updated_at, description,dataImage,key; // Ajout de description
     int year;
     boolean availability;
 
@@ -92,4 +94,13 @@ public class Book {
     public void setDataImage(String dataImage) {
         this.dataImage = dataImage;
     }
+    // Getters et setters pour key
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
 }
