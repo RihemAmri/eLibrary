@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 import com.example.libraryland.Book;
 import com.example.libraryland.R;
 
@@ -39,12 +41,11 @@ public class ViewDetails extends AppCompatActivity {
             textViewAuthor.setText("Author: " + book.getAuthor());
             textViewYear.setText("Year: " + book.getYear());
             textViewAvailability.setText(book.isAvailability() ? "Available" : "Not Available");
-
-            // Charger l'image depuis Firebase avec Picasso
-            /*Picasso.get()
-                    .load(book.getImageUrl())
-                    .placeholder(R.drawable.placeholder_image)
-                    .into(imageViewBookCover);*/
+            Glide.with(this)
+                    .load(book.getDataImage())  // URL de l'image
+                    .placeholder(R.drawable.placeholder_image)  // Image de remplacement en attendant que l'image soit chargée
+                      // Image d'erreur en cas de problème de chargement
+                    .into(imageViewBookCover);  // ImageView où l'image sera affichée
 
             // Mettre à jour l'état du bouton selon la disponibilité
             if (book.isAvailability()) {

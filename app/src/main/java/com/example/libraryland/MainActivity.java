@@ -1,7 +1,10 @@
 package com.example.libraryland;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +24,22 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference database;
     MyAdapterbookuser myAdapter;
     ArrayList<Book> list;
+    ArrayList<Book> fullList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.category_romance).setOnClickListener(v -> filterByGenre("Romance"));
+        findViewById(R.id.category_scifi).setOnClickListener(v-> filterByGenre("Science Fiction"));
+        findViewById(R.id.category_fantasy).setOnClickListener(v -> filterByGenre("Fantasy"));
+        findViewById(R.id.category_horror).setOnClickListener(v -> filterByGenre("Horror"));
+        findViewById(R.id.category_adventure).setOnClickListener(v -> filterByGenre("Adventure"));
+        findViewById(R.id.category_comedy).setOnClickListener(v -> filterByGenre("Comedy"));
+        findViewById(R.id.search_container).setOnClickListener(v -> {
+            myAdapter.list = new ArrayList<>(fullList); // Rétablir la liste complète
+            myAdapter.notifyDataSetChanged();
+        });
         Log.d("hellooo", "hani fil main ");
         recyclerView = findViewById(R.id.booklist);
         database= FirebaseDatabase.getInstance().getReference("books");
@@ -46,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                          // Définit l'ID dans l'objet Book
                         list.add(book);
                     }
+                    fullList = new ArrayList<>(list);
                 }
                 for (Book book : list) {
                     Log.d("BookInList", "Book: " + book.getTitle() + ", Author: " + book.getAuthor());
@@ -60,8 +75,48 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        EditText searchBar = findViewById(R.id.search_bar);
 
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Rien à faire ici
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterList(s.toString());
+            }
 
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Rien à faire ici
+            }
+        });
     }
+    private void filterList(String query) {
+        ArrayList<Book> filteredList = new ArrayList<>();
+        for (Book book : fullList) { // Utiliser fullList pour filtrer
+            if (book.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                    book.getAuthor().toLowerCase().contains(query.toLowerCase()) ||
+                    book.getGenre().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(book);
+            }
+        }
+        myAdapter.list = filteredList; // Mettre à jour la liste dans l'adaptateur
+        myAdapter.notifyDataSetChanged(); // Notifier l'adaptateur pour rafraîchir
+    }
+    private void filterByGenre(String genre) {
+        ArrayList<Book> filteredList = new ArrayList<>();
+        for (Book book : fullList) {
+            if (book.getGenre().equalsIgnoreCase(genre)) {
+                filteredList.add(book);
+            }
+        }
+        myAdapter.list = filteredList; // Mettre à jour la liste dans l'adaptateur
+        myAdapter.notifyDataSetChanged(); // Rafraîchir l'adaptateur
+    }
+
+
+
 }

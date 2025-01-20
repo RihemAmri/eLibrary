@@ -61,6 +61,7 @@
 
             <!-- Catégorie Romance -->
             <LinearLayout
+                android:id="@+id/category_romance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -94,6 +95,7 @@
 
             <!-- Catégorie Science Fiction -->
             <LinearLayout
+                android:id="@+id/category_scifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -127,6 +129,7 @@
 
             <!-- Catégorie Fantasy -->
             <LinearLayout
+                android:id="@+id/category_fantasy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -160,6 +163,7 @@
 
             <!-- Catégorie Horror -->
             <LinearLayout
+                android:id="@+id/category_horror"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -193,6 +197,7 @@
 
             <!-- Catégorie Adventure -->
             <LinearLayout
+                android:id="@+id/category_adventure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -226,6 +231,7 @@
 
             <!-- Catégorie Comedy -->
             <LinearLayout
+                android:id="@+id/category_comedy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
