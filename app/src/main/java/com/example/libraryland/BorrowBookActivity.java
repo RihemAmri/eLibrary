@@ -48,6 +48,12 @@ public class BorrowBookActivity extends AppCompatActivity {
         String currentDate = dateFormat.format(new Date());
         requestDateEditText.setText(currentDate);
 
+        // Récupérer le nom du livre passé par ViewDetails
+        Book bookName = (Book) getIntent().getSerializableExtra("book");
+        if (bookName != null) {
+            bookNameEditText.setText(bookName.getTitle());  // Afficher le nom du livre dans le champ
+        }
+
         // Définir un listener pour le bouton Borrow
         borrowButton.setOnClickListener(view -> checkBookAvailabilityAndBorrow());
     }

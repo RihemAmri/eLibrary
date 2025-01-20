@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else if ("user".equals(roleFromDB)) {
-                            Intent intent = new Intent(LoginActivity.this, Hist_BorrowActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         }

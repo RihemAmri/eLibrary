@@ -41,15 +41,17 @@ public class MyBorrowAdapter extends RecyclerView.Adapter<MyBorrowAdapter.ViewHo
         Borrow borrow = borrowList.get(position);
 
         // Associer les champs de la classe Borrow aux vues de l'interface
-        holder.title.setText(borrow.getBookname()); // Nom du livre
-        holder.requestDate.setText("Date de demande : " + borrow.getRequestDate()); // Date de demande
-        holder.returnDate.setText("Date de retour : " + borrow.getReturnDate()); // Date de retour
+        holder.title.setText(borrow.getBookname());
+        holder.requestDate.setText("Date de demande : " + borrow.getRequestDate());
+        holder.returnDate.setText("Date de retour : " + borrow.getReturnDate());
+
 
         // Bouton de suppression
         holder.deletebtn.setOnClickListener(v -> {
-            deleteBorrowRequest(borrow, position);
+            deleteBorrowRequest(borrow, holder.getAdapterPosition()); // Utiliser getAdapterPosition
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -57,62 +59,74 @@ public class MyBorrowAdapter extends RecyclerView.Adapter<MyBorrowAdapter.ViewHo
     }
 
     private void deleteBorrowRequest(Borrow borrow, int position) {
-        // Supprimer l'emprunt de Firebase
+        // Référence à la base de données des emprunts
         DatabaseReference borrowRef = FirebaseDatabase.getInstance().getReference("borrow");
-        borrowRef.orderByChild("bookname").equalTo(borrow.getBookname()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Supprimer l'emprunt
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    dataSnapshot.getRef().removeValue().addOnSuccessListener(aVoid -> {
-                        Log.d("Firebase", "Emprunt supprimé avec succès");
 
-                        // Mettre à jour la disponibilité du livre
-                        updateBookAvailability(borrow.getBookname());
+        borrowRef.orderByChild("bookname").equalTo(borrow.getBookname())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Borrow fetchedBorrow = dataSnapshot.getValue(Borrow.class);
 
-                        // Mise à jour de l'affichage après suppression
-                        borrowList.remove(position);
-                        notifyItemRemoved(position);
-                    }).addOnFailureListener(e ->
-                            Log.e("Firebase", "Erreur lors de la suppression", e)
-                    );
-                }
-            }
+                            if (fetchedBorrow != null && fetchedBorrow.getUsername().equals(borrow.getUsername())) {
+                                // Supprimer l'emprunt
+                                dataSnapshot.getRef().removeValue()
+                                        .addOnSuccessListener(aVoid -> {
+                                            Log.d("Firebase", "Emprunt supprimé avec succès : " + borrow.getBookname());
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Firebase", "Erreur lors de l'accès à Firebase", error.toException());
-            }
-        });
+                                            // Mettre à jour la disponibilité du livre
+                                            updateBookAvailability(borrow.getBookname());
+
+                                            // Mise à jour de l'adaptateur après suppression
+                                            borrowList.remove(position);
+                                            notifyItemRemoved(position);
+                                            notifyItemRangeChanged(position, borrowList.size()); // Mettre à jour les positions restantes
+                                        })
+                                        .addOnFailureListener(e -> Log.e("Firebase", "Erreur lors de la suppression", e));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("Firebase", "Erreur lors de la récupération des emprunts", error.toException());
+                    }
+                });
     }
+
 
     private void updateBookAvailability(String bookname) {
-        DatabaseReference bookRef = FirebaseDatabase.getInstance().getReference("book");
-        bookRef.orderByChild("title").equalTo(bookname).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Book book = dataSnapshot.getValue(Book.class);
-                    if (book != null) {
-                        // Mettre à jour la disponibilité du livre
-                        book.availability = true;
+        // Référence à la base de données des livres
+        DatabaseReference bookRef = FirebaseDatabase.getInstance().getReference("books");
 
-                        // Sauvegarder l'objet Book avec la disponibilité mise à jour
-                        dataSnapshot.getRef().setValue(book).addOnSuccessListener(aVoid ->
-                                Log.d("Firebase", "Disponibilité du livre mise à jour avec succès")
-                        ).addOnFailureListener(e ->
-                                Log.e("Firebase", "Erreur lors de la mise à jour de la disponibilité", e)
-                        );
+        bookRef.orderByChild("title").equalTo(bookname)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Book book = dataSnapshot.getValue(Book.class);
+
+                            if (book != null) {
+                                book.setAvailability(true); // Marquer le livre comme disponible
+
+                                // Sauvegarder les modifications
+                                dataSnapshot.getRef().setValue(book)
+                                        .addOnSuccessListener(aVoid -> Log.d("Firebase", "Disponibilité mise à jour pour : " + bookname))
+                                        .addOnFailureListener(e -> Log.e("Firebase", "Erreur lors de la mise à jour de la disponibilité", e));
+                            }
+                        }
                     }
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Firebase", "Erreur lors de l'accès à Firebase", error.toException());
-            }
-        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("Firebase", "Erreur lors de la récupération des livres", error.toException());
+                    }
+                });
     }
+
+
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView title, requestDate, returnDate;
