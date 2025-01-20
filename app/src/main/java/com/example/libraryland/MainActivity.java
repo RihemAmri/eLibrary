@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.category_romance).setOnClickListener(v -> filterByGenre("Romance"));
-        findViewById(R.id.category_scifi).setOnClickListener(v -> filterByGenre("Science Fiction"));
+        findViewById(R.id.category_scifi).setOnClickListener(v-> filterByGenre("Science Fiction"));
         findViewById(R.id.category_fantasy).setOnClickListener(v -> filterByGenre("Fantasy"));
         findViewById(R.id.category_horror).setOnClickListener(v -> filterByGenre("Horror"));
         findViewById(R.id.category_adventure).setOnClickListener(v -> filterByGenre("Adventure"));
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("TAG", "Message à afficher");
 
                     if (book != null) {
-                         // Définit l'ID dans l'objet Book
+                        // Définit l'ID dans l'objet Book
                         list.add(book);
                     }
                     fullList = new ArrayList<>(list);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.d("RecyclerViewUpdate", "Calling notifyDataSetChanged()");
                 myAdapter.notifyDataSetChanged();
-                }
+            }
 
 
             @Override
@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
         EditText searchBar = findViewById(R.id.search_bar);
 
         searchBar.addTextChangedListener(new TextWatcher() {
@@ -118,5 +116,7 @@ public class MainActivity extends AppCompatActivity {
         myAdapter.list = filteredList; // Mettre à jour la liste dans l'adaptateur
         myAdapter.notifyDataSetChanged(); // Rafraîchir l'adaptateur
     }
+
+
 
 }
