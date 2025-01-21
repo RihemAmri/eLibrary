@@ -1,14 +1,24 @@
 package com.example.libraryland;
 
+import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +31,7 @@ import java.util.Date;
 import java.util.Locale;
 import com.google.android.material.snackbar.Snackbar;
 public class SystemEventReceiver extends BroadcastReceiver {
+    private static final String CHANNEL_ID = "time_set_channel";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -35,8 +46,16 @@ public class SystemEventReceiver extends BroadcastReceiver {
             */
             handleBootCompleted(context);
         } else if ("android.intent.action.TIME_SET".equals(action)) { // Changez ici
-            Toast.makeText(context.getApplicationContext(), "Test Toast", Toast.LENGTH_LONG).show();
+            Log.d("SystemEventReceiver", "Time set action received");
+            //showSnackbar(context, "Time set action detected!");
+            // Créer le canal de notification si nécessaire
+            createNotificationChannel(context);
+
+            // Afficher la notification
+            showNotification(context);
+
             handleTimeChanged(context);
+
         }
     }
 
@@ -54,11 +73,11 @@ public class SystemEventReceiver extends BroadcastReceiver {
                         long lastConsultDate = snapshot.child("lastConsultDate").getValue(Long.class);
 
                         // Affichage du message initial
-                        Toast.makeText(context, "Recent Dates", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context, "Recent Dates", Toast.LENGTH_LONG).show();
 
                         // Afficher chaque date dans un Toast séparé
                         if (lastCreateDate != 0) {
-                            Toast.makeText(context, "Creation: " + formatDate(lastCreateDate), Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Recent Dates : Creation: " + formatDate(lastCreateDate), Toast.LENGTH_LONG).show();
                         }
 
                         if (lastModifyDate != 0) {
@@ -118,18 +137,14 @@ public class SystemEventReceiver extends BroadcastReceiver {
 
                     // Comparer la date actuelle avec la plus récente date
                     if (currentDate < mostRecentDate) {
-                        // Si la date actuelle est antérieure à la plus récente date, afficher un avertissement
                         Log.d("SystemEventReceiver", "Warning: System date is earlier than the most recent date in Firebase.");
 
-                        // Afficher un Toast sur le thread principal
-                        /*new android.os.Handler(Looper.getMainLooper()).post(() ->
-                                Toast.makeText(context.getApplicationContext(),
+                        // Afficher le Toast sur le thread principal
+                        new android.os.Handler(Looper.getMainLooper()).post(() ->
+                                Toast.makeText(context,
                                         "Warning: System date is earlier than the most recent date in Firebase.",
                                         Toast.LENGTH_LONG).show()
-                        );*/
-                        Toast.makeText(context,
-                                "Warning: System date is earlier than the most recent date in Firebase.",
-                                Toast.LENGTH_LONG).show();
+                        );
                     } else {
                         Log.d("SystemEventReceiver", "System date is valid.");
                     }
@@ -144,6 +159,39 @@ public class SystemEventReceiver extends BroadcastReceiver {
             }
         });
     }
+    private void createNotificationChannel(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Time Set Channel";
+            String description = "Channel for Time Set notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+    }
+
+    private void showNotification(Context context) {
+        // Vérifier la permission avant d'envoyer une notification
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                return; // Permission manquante, ne pas envoyer la notification
+            }
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.baseline_email_24)
+                .setContentTitle("Time Set Detected")
+                .setContentText("The system time has been changed.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(1, builder.build());
+    }
+
 
 
 
