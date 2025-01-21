@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Mise à jour de la date de consultation dans Firebase
+                DatabaseReference datesRef = FirebaseDatabase.getInstance().getReference("RecentDates");
+                datesRef.child("lastConsultDate").setValue(System.currentTimeMillis())
+                        .addOnSuccessListener(aVoid -> Log.d("ConsultBook", "lastConsultDate updated successfully"))
+                        .addOnFailureListener(e -> Log.e("ConsultBook", "Failed to update lastConsultDate: " + e.getMessage()));
                 // Intent pour passer à l'activité DetailActivity
                 Intent intent = new Intent(context, DetailActivity.class);
 

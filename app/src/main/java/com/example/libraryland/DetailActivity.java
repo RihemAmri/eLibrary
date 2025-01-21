@@ -63,6 +63,11 @@ public class DetailActivity extends AppCompatActivity {
                 // Supprime le livre (y compris l'URL de l'image stockée)
                 reference.child(key).removeValue()
                         .addOnSuccessListener(unused -> {
+                            // Met à jour la date de suppression dans "RecentDates"
+                            DatabaseReference datesRef = FirebaseDatabase.getInstance().getReference("RecentDates");
+                            datesRef.child("lastDeleteDate").setValue(System.currentTimeMillis())
+                                    .addOnSuccessListener(updateTask -> Log.d("DeleteBook", "lastDeleteDate updated successfully"))
+                                    .addOnFailureListener(error -> Log.e("DeleteBook", "Failed to update lastDeleteDate: " + error.getMessage()));
                             Toast.makeText(DetailActivity.this, "Book deleted successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), BooksListActivity.class));
                             finish();

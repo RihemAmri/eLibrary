@@ -170,6 +170,12 @@ public class UpdateActivity extends AppCompatActivity {
         book.setKey(bookKey);
 
         databaseReference.setValue(book).addOnSuccessListener(aVoid -> {
+            // Met à jour la date de modification dans RecentDates
+            DatabaseReference datesRef = FirebaseDatabase.getInstance().getReference("RecentDates");
+            datesRef.child("lastModifyDate").setValue(System.currentTimeMillis())
+                    .addOnSuccessListener(updateTask -> Log.d("ModifyBook", "lastModifyDate updated successfully"))
+                    .addOnFailureListener(error -> Log.e("ModifyBook", "Failed to update lastModifyDate: " + error.getMessage()));
+
             Toast.makeText(UpdateActivity.this, "Book updated successfully", Toast.LENGTH_SHORT).show();
             finish();
         }).addOnFailureListener(e -> {
