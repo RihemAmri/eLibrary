@@ -33,7 +33,7 @@ public class ViewDetails extends AppCompatActivity {
         // Button to navigate to Historique
         FloatingActionButton historiqueButton = findViewById(R.id.historique);
         historiqueButton.setOnClickListener(v -> {
-            Intent historiqueIntent = new Intent(ViewDetails.this, HistoriqueActivity.class);
+            Intent historiqueIntent = new Intent(ViewDetails.this, Hist_BorrowActivity.class);
             startActivity(historiqueIntent);
         });
 

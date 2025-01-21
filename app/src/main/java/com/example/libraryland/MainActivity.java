@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         // Button to navigate to Historique
         FloatingActionButton historiqueButton = findViewById(R.id.historique);
         historiqueButton.setOnClickListener(v -> {
-            Intent historiqueIntent = new Intent(MainActivity.this, HistoriqueActivity.class);
+            Intent historiqueIntent = new Intent(MainActivity.this, Hist_BorrowActivity.class);
             startActivity(historiqueIntent);
         });
 
