@@ -1,5 +1,6 @@
 package com.example.libraryland;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,31 @@ public class Hist_BorrowActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hist_borrow);
+
+
+
+        // Button to log out and navigate to LoginActivity
+        FloatingActionButton logoutButton = findViewById(R.id.logout);
+        logoutButton.setOnClickListener(v -> {
+            // Here you can perform logout logic if necessary
+
+            // Redirect to LoginActivity
+            Intent logoutIntent = new Intent(Hist_BorrowActivity.this, LoginActivity.class);
+            startActivity(logoutIntent);
+            finish(); // Close the current activity
+        });
+        FloatingActionButton homeButton = findViewById(R.id.home);
+        homeButton.setOnClickListener(v -> {
+            // Here you can perform logout logic if necessary
+
+            // Redirect to LoginActivity
+            Intent logoutIntent = new Intent(Hist_BorrowActivity.this, MainActivity.class);
+            startActivity(logoutIntent);
+            finish(); // Close the current activity
+        });
+
+
+
 
         findViewById(R.id.category_romance).setOnClickListener(v -> filterByGenre("Romance"));
         findViewById(R.id.category_scifi).setOnClickListener(v -> filterByGenre("Science Fiction"));

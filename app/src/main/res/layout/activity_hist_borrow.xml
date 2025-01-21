@@ -277,4 +277,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp" />
 
+    <!-- Floating Action Menu -->
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu_colorNormal="@color/lavender"
+        app:menu_colorPressed="@color/lavender"
+        app:menu_icon="@drawable/baseline_format_list_bulleted_24"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="530dp">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_logout_24"
+            app:fab_colorNormal="@color/white"
+            app:fab_showShadow="true"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_home_24"
+            app:fab_colorNormal="@color/white"
+            app:fab_showShadow="true"
+            app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
