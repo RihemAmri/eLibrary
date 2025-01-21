@@ -108,6 +108,7 @@
 
                 <!-- Card 2: Number of Users -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/users"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     app:cardCornerRadius="16dp"
@@ -149,6 +150,7 @@
 
                 <!-- Card 3: Reservations -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/borrow_card"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     app:cardCornerRadius="16dp"
