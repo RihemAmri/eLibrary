@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
@@ -18,12 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher2_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.LibraryLand"
-        tools:targetApi="31">
-        <activity 
-            android:name=".Hist_BorrowActivity"
-            android:exported="false" />
+        tools:targetApi="31" >
         <activity
             android:name=".HistoriqueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Hist_BorrowActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
@@ -58,7 +58,7 @@
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
