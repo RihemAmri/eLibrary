@@ -66,22 +66,22 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean validateInput(String name, String email, String username, String password) {
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Tous les champs doivent être remplis.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "All fields must be filled in.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         if (username.length() < 5) {
-            Toast.makeText(this, "Le nom d'utilisateur doit contenir au moins 5 caractères.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "The username must contain at least 5 characters", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         if (password.length() < 6) {
-            Toast.makeText(this, "Le mot de passe doit contenir au moins 6 caractères.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "The password must contain at least 6 characters.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(this, "Veuillez saisir une adresse e-mail valide.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -97,12 +97,12 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    Toast.makeText(SignupActivity.this, "Le nom d'utilisateur existe déjà. Veuillez en choisir un autre.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "The username already exists. Please choose another one", Toast.LENGTH_SHORT).show();
                 } else {
                     // Enregistre l'utilisateur si le nom d'utilisateur est disponible
                     HelperClass helperClass = new HelperClass(name, email, username, hashedPassword, "user"); // Rôle par défaut "user"
                     reference.child(username).setValue(helperClass);
-                    Toast.makeText(SignupActivity.this, "Inscription réussie !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
 
                     // Redirige vers l'écran de connexion
                     Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
@@ -112,7 +112,7 @@ public class SignupActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(SignupActivity.this, "Erreur lors de la vérification du nom d'utilisateur.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Error checking the username.", Toast.LENGTH_SHORT).show();
                 Log.e("SignupActivity", "Database error: " + error.getMessage());
             }
         });
