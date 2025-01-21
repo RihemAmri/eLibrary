@@ -19,7 +19,7 @@
             android:id="@+id/book_image"
             android:layout_width="80dp"
             android:layout_height="100dp"
-
+            android:src="@drawable/placeholder_image"
             android:scaleType="centerCrop"
             android:layout_marginEnd="16dp" />
 
@@ -41,19 +41,19 @@
                 android:layout_marginBottom="4dp" />
 
             <TextView
-                android:id="@+id/author"
+                android:id="@+id/request_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Auteur"
+                android:text="Request Date"
                 android:textSize="14sp"
                 android:textColor="@android:color/darker_gray"
                 android:layout_marginBottom="4dp" />
 
             <TextView
-                android:id="@+id/genre"
+                android:id="@+id/return_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PDF, 750 KB"
+                android:text="Return Date"
                 android:textSize="14sp"
                 android:textColor="@android:color/darker_gray" />
 
@@ -61,12 +61,12 @@
 
         <!-- Boutons ou icônes à droite -->
         <Button
-            android:id="@+id/book_more_options"
+            android:id="@+id/delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:backgroundTint="@color/lavender"
-            android:text="View Details"
+            android:backgroundTint="@color/purple_500"
+            android:text="Delete"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"

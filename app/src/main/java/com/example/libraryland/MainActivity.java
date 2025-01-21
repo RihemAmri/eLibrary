@@ -1,9 +1,11 @@
 package com.example.libraryland;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -11,11 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.example.libraryland.R;
 
 import java.util.ArrayList;
 
@@ -30,6 +35,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Button to navigate to Historique
+        FloatingActionButton historiqueButton = findViewById(R.id.historique);
+        historiqueButton.setOnClickListener(v -> {
+            Intent historiqueIntent = new Intent(MainActivity.this, Hist_BorrowActivity.class);
+            startActivity(historiqueIntent);
+        });
+
+        // Button to log out and navigate to LoginActivity
+        FloatingActionButton logoutButton = findViewById(R.id.logout);
+        logoutButton.setOnClickListener(v -> {
+            // Here you can perform logout logic if necessary
+
+            // Redirect to LoginActivity
+            Intent logoutIntent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(logoutIntent);
+            finish(); // Close the current activity
+        });
+
+
+
+
+
+
         findViewById(R.id.category_romance).setOnClickListener(v -> filterByGenre("Romance"));
         findViewById(R.id.category_scifi).setOnClickListener(v-> filterByGenre("Science Fiction"));
         findViewById(R.id.category_fantasy).setOnClickListener(v -> filterByGenre("Fantasy"));
@@ -93,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
                 // Rien à faire ici
             }
         });
+
+
+
+
+
     }
     private void filterList(String query) {
         ArrayList<Book> filteredList = new ArrayList<>();

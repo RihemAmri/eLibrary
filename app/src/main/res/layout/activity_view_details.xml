@@ -1,63 +1,209 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
 
-    <!-- Image -->
-    <ImageView
-        android:id="@+id/imageViewBookCover"
-        android:layout_width="150dp"
-        android:layout_height="220dp"
-        android:layout_gravity="center_horizontal"
-        android:scaleType="centerCrop"
-        android:contentDescription="Book Cover" />
-
-    <!-- Title -->
-    <TextView
-        android:id="@+id/textViewTitle"
+    <!-- Scrollable Content -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Title"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-    <!-- Author -->
-    <TextView
-        android:id="@+id/textViewAuthor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Author"
-        android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="16dp"
+            android:clipToPadding="false"
+            android:elevation="4dp">
 
-    <!-- Year -->
-    <TextView
-        android:id="@+id/textViewYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Year: 2024"
-        android:textSize="16sp" />
+            <!-- Image -->
+            <ImageView
+                android:id="@+id/imageViewBookCover"
+                android:layout_width="150dp"
+                android:layout_height="220dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                android:contentDescription="Book Cover"
+                 /> <!-- Remplacez "your_image_resource" par le nom de l'image correcte -->
 
-    <!-- Availability -->
-    <TextView
-        android:id="@+id/textViewAvailability"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Available"
-        android:textSize="16sp"
-        android:textColor="@android:color/holo_green_dark" />
+            <!-- Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
 
-    <!-- Borrow Button -->
-    <Button
-        android:id="@+id/buttonBorrow"
-        android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                     /> <!-- Assurez-vous que cette image existe dans vos ressources -->
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Author -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:srcCompat="@drawable/baseline_author_24" /> <!-- Remplacez par votre icône -->
+                <TextView
+                    android:id="@+id/textViewAuthor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Author"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Year -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:srcCompat="@drawable/baseline_access_time_24" />
+                <TextView
+                    android:id="@+id/textViewYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Year: 2024"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Genre -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:srcCompat="@drawable/baseline_category_24" />
+                <TextView
+                    android:id="@+id/genre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Genre:"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Description -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:srcCompat="@drawable/baseline_description_24" />
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Description: "
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Availability -->
+            <TextView
+                android:id="@+id/textViewAvailability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Available"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_green_dark" />
+
+            <!-- Borrow Button -->
+            <Button
+                android:id="@+id/buttonBorrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Borrow"
+                android:enabled="true"
+                android:backgroundTint="@color/violet"
+                android:textColor="@android:color/white" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Floating Action Menu -->
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Borrow"
-        android:enabled="true"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:textColor="@android:color/white" />
-</LinearLayout>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:menu_fab_size="normal"
+        app:menu_colorPressed="@color/lavender"
+        app:menu_colorNormal="@color/lavender"
+        app:menu_icon="@drawable/baseline_format_list_bulleted_24"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true"
+        >
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/historique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_description_24"
+            app:fab_showShadow="true"
+            app:fab_colorNormal="@color/white"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_logout_24"
+            app:fab_showShadow="true"
+            app:fab_colorNormal="@color/white"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_home_24"
+            app:fab_showShadow="true"
+            app:fab_colorNormal="@color/white"
+            app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
