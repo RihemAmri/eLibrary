@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,7 +47,41 @@ public class MyBorrowAdapter extends RecyclerView.Adapter<MyBorrowAdapter.ViewHo
         holder.requestDate.setText("Date de demande : " + borrow.getRequestDate());
         holder.returnDate.setText("Date de retour : " + borrow.getReturnDate());
 
+        // Récupérer le nom du livre pour effectuer une recherche
+        String bookname = borrow.getBookname();
 
+        // Référence à la base de données des livres
+        DatabaseReference bookRef = FirebaseDatabase.getInstance().getReference("books");
+
+        // Chercher le livre par son nom
+        bookRef.orderByChild("title").equalTo(bookname).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Parcourir les livres récupérés
+                for (DataSnapshot bookSnapshot : dataSnapshot.getChildren()) {
+                    Book book = bookSnapshot.getValue(Book.class);
+
+                    if (book != null) {
+                        // Afficher l'image du livre si elle existe
+                        String imageUrl = book.getDataImage();  // Récupérer l'URL de l'image du livre
+                        if (imageUrl != null && !imageUrl.isEmpty()) {
+                            Glide.with(holder.itemView.getContext())  // Utilisation de Glide
+                                    .load(imageUrl)  // L'URL de l'image
+                                    .placeholder(R.drawable.placeholder_image)  // Image de remplacement
+                                     // Image en cas d'erreur
+                                    .into(holder.bookImage);  // Affichage dans l'ImageView
+                        } else {
+                            holder.bookImage.setImageResource(R.drawable.placeholder_image);  // Affichage d'une image par défaut
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase", "Erreur lors de la récupération du livre", error.toException());
+            }
+        });
         // Bouton de suppression
         holder.deletebtn.setOnClickListener(v -> {
             deleteBorrowRequest(borrow, holder.getAdapterPosition()); // Utiliser getAdapterPosition
@@ -131,6 +167,7 @@ public class MyBorrowAdapter extends RecyclerView.Adapter<MyBorrowAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView title, requestDate, returnDate;
         Button deletebtn;
+        ImageView bookImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -138,6 +175,7 @@ public class MyBorrowAdapter extends RecyclerView.Adapter<MyBorrowAdapter.ViewHo
             requestDate = itemView.findViewById(R.id.request_date);
             returnDate = itemView.findViewById(R.id.return_date);
             deletebtn = itemView.findViewById(R.id.delete_button);
+            bookImage = itemView.findViewById(R.id.book_image);
         }
     }
 }
