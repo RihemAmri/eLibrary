@@ -152,6 +152,13 @@ public class AddBookActivity extends AppCompatActivity {
         booksRef.child(key) // Utilise la clé générée comme identifiant
                 .setValue(book)
                 .addOnSuccessListener(aVoid -> {
+                    // Met à jour la date de création dans RecentDates
+                    DatabaseReference datesRef = FirebaseDatabase.getInstance().getReference("RecentDates");
+                    datesRef.child("lastCreateDate").setValue(System.currentTimeMillis())
+                            .addOnSuccessListener(updateTask -> Log.d("CreateBook", "lastCreateDate updated successfully"))
+                            .addOnFailureListener(error -> Log.e("CreateBook", "Failed to update lastCreateDate: " + error.getMessage()));
+
+
                     Toast.makeText(AddBookActivity.this, "Book added successfully", Toast.LENGTH_SHORT).show();
                     finish();
                 }).addOnFailureListener(e -> {
