@@ -14,6 +14,7 @@ public class AdminActivity extends AppCompatActivity {
 
         // Trouver la CardView pour les livres
         CardView booksCard = findViewById(R.id.books_card);
+        CardView borrowsCard = findViewById(R.id.borrow_card);
 
         // Ajouter un clic listener
         booksCard.setOnClickListener(new View.OnClickListener() {
@@ -21,6 +22,14 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Lancer BooksListActivity
                 Intent intent = new Intent(AdminActivity.this, BooksListActivity.class);
+                startActivity(intent);
+            }
+        });
+        borrowsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lancer BooksListActivity
+                Intent intent = new Intent(AdminActivity.this, HistoriqueActivity.class);
                 startActivity(intent);
             }
         });
