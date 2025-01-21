@@ -54,7 +54,10 @@ public class MyResAdapter extends RecyclerView.Adapter<MyResAdapter.ViewHolder> 
         } else {
             holder.recImage.setImageResource(R.drawable.placeholder_image); // Image par défaut si aucune image
         }
+
+        MyResAdapter:holder.recUsername.setText(borrow.getUsername());
     }
+
 
     @Override
     public int getItemCount() {
@@ -63,7 +66,7 @@ public class MyResAdapter extends RecyclerView.Adapter<MyResAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView recTitle, recDesc, recLang;
+        TextView recTitle, recDesc, recLang,recUsername;
         ShapeableImageView recImage;
 
         public ViewHolder(@NonNull View itemView) {
@@ -72,6 +75,7 @@ public class MyResAdapter extends RecyclerView.Adapter<MyResAdapter.ViewHolder> 
             recDesc = itemView.findViewById(R.id.recDesc);
             recLang = itemView.findViewById(R.id.recLang);
             recImage = itemView.findViewById(R.id.recImage);
+            recUsername = itemView.findViewById(R.id.recUsername);
         }
     }
 }

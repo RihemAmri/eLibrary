@@ -42,7 +42,22 @@
             android:ellipsize="end"
             android:singleLine="true"/>
 
-        <!-- Auteur -->
+        <!-- Username -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recUsername"
+            android:text="Username"
+            android:textColor="@color/lavender"
+            android:textSize="12sp"
+            android:layout_below="@id/recTitle"
+            android:layout_toEndOf="@id/recImage"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+
+        <!-- Date de demande -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,14 +65,14 @@
             android:text="date request"
             android:textColor="@color/lavender"
             android:textSize="14sp"
-            android:layout_below="@id/recTitle"
+            android:layout_below="@id/recUsername"
             android:layout_toEndOf="@id/recImage"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
             android:maxLines="1"
             android:ellipsize="end"/>
 
-        <!-- Genre -->
+        <!-- Date de retour -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.libraryland;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,31 @@ public class HistoriqueActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historique);
+
+
+
+        // Button to log out and navigate to LoginActivity
+        FloatingActionButton logoutButton = findViewById(R.id.logout);
+        logoutButton.setOnClickListener(v -> {
+            // Here you can perform logout logic if necessary
+
+            // Redirect to LoginActivity
+            Intent logoutIntent = new Intent(HistoriqueActivity.this, LoginActivity.class);
+            startActivity(logoutIntent);
+            finish(); // Close the current activity
+        });
+        FloatingActionButton homeButton = findViewById(R.id.home);
+        homeButton.setOnClickListener(v -> {
+            // Here you can perform logout logic if necessary
+
+            // Redirect to LoginActivity
+            Intent logoutIntent = new Intent(HistoriqueActivity.this, AdminActivity.class);
+            startActivity(logoutIntent);
+            finish(); // Close the current activity
+        });
+
+
+
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

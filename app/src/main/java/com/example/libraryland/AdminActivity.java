@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.cardview.widget.CardView;
 
 public class AdminActivity extends AppCompatActivity {
     @Override
@@ -27,6 +28,7 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+
         borrowsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,5 +38,16 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        CardView usersCard = findViewById(R.id.users);
+
+        // Ajouter un clic listener pour les utilisateurs
+        usersCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lancer UsersListActivity
+                Intent intent = new Intent(AdminActivity.this, UsersListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
