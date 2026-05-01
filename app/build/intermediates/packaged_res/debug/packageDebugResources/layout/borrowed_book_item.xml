@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/background_rounded"
+    android:padding="8dp"
+    android:layout_marginBottom="5dp"
+    android:elevation="4dp">
+
+    <!-- Informations produit -->
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/darker_gray"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bookname"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginTop="0dp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/BookName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book Name"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/lavender" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/currentPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date request"
+                android:textSize="14sp"
+                android:textColor="#926A9A"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/oldPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date return"
+                android:textSize="14sp"
+                android:textColor="#926A9A" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bouton de suppression -->
+    <ImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_delete"
+        app:tint="#960018"
+        android:layout_gravity="center_vertical" />
+</LinearLayout>

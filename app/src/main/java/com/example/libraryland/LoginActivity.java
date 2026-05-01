@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validateUsername() {
         String val = loginUsername.getText().toString();
         if (val.isEmpty()) {
-            loginUsername.setError("Le nom d'utilisateur ne peut pas être vide");
+            loginUsername.setError("The username cannot be empty");
             return false;
         } else {
             loginUsername.setError(null);
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validatePassword() {
         String val = loginPassword.getText().toString();
         if (val.isEmpty()) {
-            loginPassword.setError("Le mot de passe ne peut pas être vide");
+            loginPassword.setError("The password cannot be empty");
             return false;
         } else {
             loginPassword.setError(null);
@@ -120,11 +120,11 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         }
                     } else {
-                        loginPassword.setError("Identifiants invalides");
+                        loginPassword.setError("Invalid credentials");
                         loginPassword.requestFocus();
                     }
                 } else {
-                    loginUsername.setError("L'utilisateur n'existe pas");
+                    loginUsername.setError("The user does not exist");
                     loginUsername.requestFocus();
                 }
             }

@@ -5,7 +5,11 @@ package com.example.libraryland;
  */
 public class Borrow {
     private String username;    // Identifiant de l'utilisateur (clé primaire dans la table Users)
+<<<<<<< HEAD
     private String bookId;      // Identifiant unique généré automatiquement pour le livre
+=======
+    private String bookname;      // Identifiant unique généré automatiquement pour le livre
+>>>>>>> 6d1714ec398d589a748c33491135f2b5efa012f4
     private String status;      // Statut de l'emprunt (ex : "pending", "returned")
     private String requestDate; // Date et heure de la demande
     private String returnDate;  // Date et heure de retour (null si pas encore retourné)
@@ -20,14 +24,24 @@ public class Borrow {
      * Constructeur avec tous les paramètres.
      *
      * @param username    Identifiant de l'utilisateur (clé primaire du user).
+<<<<<<< HEAD
      * @param bookId      Identifiant du livre (généré automatiquement par Firebase).
+=======
+     * @param bookname      Identifiant du livre (généré automatiquement par Firebase).
+>>>>>>> 6d1714ec398d589a748c33491135f2b5efa012f4
      * @param status      Statut de l'emprunt.
      * @param requestDate Date et heure de la demande.
      * @param returnDate  Date et heure de retour (peut être null).
      */
+<<<<<<< HEAD
     public Borrow(String username, String bookId, String status, String requestDate, String returnDate) {
         this.username = username;
         this.bookId = bookId;
+=======
+    public Borrow(String username, String bookname, String status, String requestDate, String returnDate) {
+        this.username = username;
+        this.bookname = bookname;
+>>>>>>> 6d1714ec398d589a748c33491135f2b5efa012f4
         this.status = status;
         this.requestDate = requestDate;
         this.returnDate = returnDate;
@@ -43,12 +57,21 @@ public class Borrow {
         this.username = username;
     }
 
+<<<<<<< HEAD
     public String getBookId() {
         return bookId;
     }
 
     public void setBookId(String bookId) {
         this.bookId = bookId;
+=======
+    public String getBookname() {
+        return bookname;
+    }
+
+    public void setBookname(String bookname) {
+        this.bookname = bookname;
+>>>>>>> 6d1714ec398d589a748c33491135f2b5efa012f4
     }
 
     public String getStatus() {

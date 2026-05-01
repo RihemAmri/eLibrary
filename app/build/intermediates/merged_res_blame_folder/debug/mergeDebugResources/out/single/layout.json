@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\fragment_second.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\fragment_second.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-mergeDebugResources-46:/layout/borrowed_book_item.xml",
+        "source": "com.example.libraryland.app-main-49:/layout/borrowed_book_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\content_update_book.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\content_update_book.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_add_book.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_add_book.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_signup.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_signup.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\fragment_first.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\fragment_first.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_update_book.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_update_book.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_hist_borrow.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_hist_borrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_admin.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_admin.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_books_list.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_books_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_view_details.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_view_details.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\activity_borrow_book.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\activity_borrow_book.xml"
+    },
+    {
+        "merged": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-mergeDebugResources-46:\\layout\\borrowed_book_item.xml",
+        "source": "C:\\Users\\LENOVO\\.gradle\\daemon\\8.9\\com.example.libraryland.app-main-49:\\layout\\borrowed_book_item.xml"
+    }
+]

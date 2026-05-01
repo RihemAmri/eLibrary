@@ -1,0 +1,194 @@
+[
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_add_book.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_add_book.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/navigation_nav_graph.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_books_list.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_books_list.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_main.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_update_book.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_update_book.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_ic_profile.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/ic_profile.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_fragment_second.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/fragment_second.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_captlevender.png.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/captlevender.png"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_baseline_lock_24.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/baseline_lock_24.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_ic_book.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/ic_book.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_login.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_ic_delete.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/ic_delete.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_borrowed_book_item.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/borrowed_book_item.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_content_update_book.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/content_update_book.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_bookname.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/bookname.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_lavender_border.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/lavender_border.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_hist_borrow.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_hist_borrow.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_admin_background.png.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/admin_background.png"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_purple.jpg.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/purple.jpg"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_view_details.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_view_details.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_background_rounded.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/background_rounded.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_signup.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_baseline_person_24.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/baseline_person_24.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_admin.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_admin.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_baseline_email_24.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/baseline_email_24.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_softpurple.jpg.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/softpurple.jpg"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_daterequest.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/daterequest.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_baseline_person_pin_24.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/baseline_person_pin_24.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_activity_borrow_book.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/activity_borrow_book.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_form_background.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/form_background.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/layout_fragment_first.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/layout/fragment_first.xml"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/drawable_pagebkg.jpg.flat",
+        "source": "com.example.libraryland.app-main-49:/drawable/pagebkg.jpg"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.libraryland.app-main-49:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.libraryland.app-merged_res-47:/xml_backup_rules.xml.flat",
+        "source": "com.example.libraryland.app-main-49:/xml/backup_rules.xml"
+    }
+]
